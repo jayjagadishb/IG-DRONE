@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.timeline-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.timeline-entry {
+  display: flex;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.timeline-entry img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.entry-text {
+  text-align: left;
+}
+
+.entry-text h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.entry-text h2 {
+  font-size: 1.1em;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: gray;
+  z-index: -1;
+  margin-top: 10px;
+}
+
+.timeline-item {
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.6;
+}
+
+.timeline-item.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.timeline-item::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-top: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.3s;
+}
+
+.timeline-item.active::before {
+  background-color: blue;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-entry img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .entry-text h2 {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    width: 70px;
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+}
